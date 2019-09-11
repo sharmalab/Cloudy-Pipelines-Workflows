@@ -8,9 +8,9 @@ Replace the url in field ```wf_nuclear_segmentation_quip_cnn.wsi_seg.imageInput`
 
 ## v1
 * Support the input tif image located in Google bucket.
-* ```nvidia-tesla-t4``` GPU is used
+* One ```nvidia-tesla-t4``` GPU is recommended
 
 ## v2
 * Support the input tif image located in Google bucket.
-* ```nvidia-tesla-t4``` GPU is used
-* Allow users to specify [Runtime attributes](https://cromwell.readthedocs.io/en/develop/RuntimeAttributes/), such as CPU count, Memory, Disk size,  etc. in the inputs.
+* One ```nvidia-tesla-t4``` GPU is recommended
+* Allow users to specify [Runtime attributes](https://cromwell.readthedocs.io/en/develop/RuntimeAttributes/), such as CPU count, Memory, Disk size,  GPU type, Nvidia driver version, etc. in the inputs.
