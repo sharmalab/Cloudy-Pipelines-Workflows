@@ -6,5 +6,8 @@ Convert VSI format to TIF format. It can run a single image or multiple images.
 Replace the url in field ```wf_quip_converter_vsi_to_tiff.convert.vsiInput``` with your vsi image url on Google bucket.
 
 ## v1
-Support the input vsi image in zip or tar.gz format, and located in Google bucket.
+* Support the input vsi image in zip or tar.gz format, and located in Google bucket.
 
+## v2
+* Support the input vsi image in zip or tar.gz format, and located in Google bucket.
+* Allow users to specify [Runtime attributes](https://cromwell.readthedocs.io/en/develop/RuntimeAttributes/), such as CPU count, Memory, Disk size,  etc. in the inputs.

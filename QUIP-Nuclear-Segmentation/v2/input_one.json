@@ -1,0 +1,18 @@
+[
+    {
+        "wf_nuclear_segmentation_quip_cnn.wsi_seg.imageInput": "gs://cloudypipelines-test_cromwell_outputs/nuclear_seg_images/001738-000368_1_04_20181011-multires.tif",
+        "wf_nuclear_segmentation_quip_cnn.wsi_seg.result": "seqmentation_results.tar.gz",
+        "wf_nuclear_segmentation_quip_cnn.wsi_seg.NPROCS": 12,
+        "wf_nuclear_segmentation_quip_cnn.wsi_seg.CUDA_VISIBLE_DEVICES": "0",
+        "wf_nuclear_segmentation_quip_cnn.wsi_seg.SEG_DOCKER_TAG": "1.0",
+        "wf_nuclear_segmentation_quip_cnn.wsi_seg.SEG_MEMORY_GB": 64,
+        "wf_nuclear_segmentation_quip_cnn.wsi_seg.SEG_DISK_GB": 70,
+        "wf_nuclear_segmentation_quip_cnn.wsi_seg.SEG_BOOT_DISK_GB": 70,
+        "wf_nuclear_segmentation_quip_cnn.wsi_seg.SEG_CPU_COUNT": 12,
+        "wf_nuclear_segmentation_quip_cnn.wsi_seg.SEG_ZONES": "us-central1-a us-central1-b us-east1-d us-east1-c us-west1-a us-west1-b southamerica-east1-c europe-west4-b europe-west4-c",
+        "wf_nuclear_segmentation_quip_cnn.wsi_seg.SEG_GPU_TYPE": "nvidia-tesla-t4",
+        "wf_nuclear_segmentation_quip_cnn.wsi_seg.SEG_NVIDIA_DRIVER_VERSION": "418.40.04",
+        "wf_nuclear_segmentation_quip_cnn.wsi_seg.SEG_MAX_RETRIES": 1,
+        "wf_nuclear_segmentation_quip_cnn.wsi_seg.SEG_PREEMPTIBLE_COUNT": 0
+    }
+]

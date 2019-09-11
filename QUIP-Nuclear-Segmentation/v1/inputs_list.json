@@ -1,0 +1,20 @@
+[
+   {
+      "wf_nuclear_segmentation_quip_cnn.wsi_seg.imageInput": "gs://cloudypipelines-test_cromwell_outputs/nuclear_seg_images/001738-000368_1_04_20181011-multires.tif",
+      "wf_nuclear_segmentation_quip_cnn.wsi_seg.result": "seqmentation_results.tar.gz",
+      "wf_nuclear_segmentation_quip_cnn.wsi_seg.CUDA_VISIBLE_DEVICES": "0",
+      "wf_nuclear_segmentation_quip_cnn.wsi_seg.NPROCS": 12
+   },
+   {
+      "wf_nuclear_segmentation_quip_cnn.wsi_seg.imageInput": "gs://cloudypipelines-test_cromwell_outputs/nuclear_seg_images/001738-000065_1_02_20180731-multires.tif",
+      "wf_nuclear_segmentation_quip_cnn.wsi_seg.result": "seqmentation_results.tar.gz",
+      "wf_nuclear_segmentation_quip_cnn.wsi_seg.CUDA_VISIBLE_DEVICES": "0",
+      "wf_nuclear_segmentation_quip_cnn.wsi_seg.NPROCS": 12
+   },
+   {
+      "wf_nuclear_segmentation_quip_cnn.wsi_seg.imageInput": "gs://cloudypipelines-test_cromwell_outputs/nuclear_seg_images/001738-000006_01_20180608-multires.tif",
+      "wf_nuclear_segmentation_quip_cnn.wsi_seg.result": "seqmentation_results.tar.gz",
+      "wf_nuclear_segmentation_quip_cnn.wsi_seg.CUDA_VISIBLE_DEVICES": "0",
+      "wf_nuclear_segmentation_quip_cnn.wsi_seg.NPROCS": 12
+   }
+]
