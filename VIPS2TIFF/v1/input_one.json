@@ -1,14 +1,10 @@
 [
-    {
-        "wf_quip_converter_vsi_to_tiff.convert.vsiInput": "gs://cloudypipelines-test_cromwell_outputs/input_images/vsi/OS-1.zip",
-        "wf_quip_converter_vsi_to_tiff.convert.tifOutput": "multires.tif",
-        "wf_quip_converter_vsi_to_tiff.convert.CONVERTER_DOCKER_TAG": "1.1", 
-        "wf_quip_converter_vsi_to_tiff.convert.CONVERTER_CPU_COUNT": 2,
-        "wf_quip_converter_vsi_to_tiff.convert.CONVERTER_MEMORY_GB": 12,
-        "wf_quip_converter_vsi_to_tiff.convert.CONVERTER_ZONES": "us-east1-b us-east1-c us-east1-d us-central1-a us-central1-b us-central1-c us-central1-f us-east4-a us-east4-b us-east4-c us-west1-a us-west1-b us-west1-c us-west2-a us-west2-b us-west2-c",
-        "wf_quip_converter_vsi_to_tiff.convert.CONVERTER_DISK_GB": 50,
-        "wf_quip_converter_vsi_to_tiff.convert.CONVERTER_MAX_RETRIES": 1,
-        "wf_quip_converter_vsi_to_tiff.convert.CONVERTER_BOOT_DISK_GB": 50,
-        "wf_quip_converter_vsi_to_tiff.convert.CONVERTER_PREEMPTIBLE_COUNT": 0
-      }
+  {
+     "wf_quip_converter_vsi_to_tiff.convert.vsiInput": "gs://cloudypipelines-test_cromwell_outputs/input_images/vsi/OS-1.zip",
+     "wf_quip_converter_vsi_to_tiff.convert.tifOutput": "multires.tif"
+  },
+  {
+      "wf_quip_converter_vsi_to_tiff.convert.vsiInput": "gs://cloudypipelines-test_cromwell_outputs/input_images/vsi/OS-2.zip",
+      "wf_quip_converter_vsi_to_tiff.convert.tifOutput": "multires.tif"
+   }
 ]
