@@ -3,16 +3,9 @@ task convert {
   String tifOutput
   command {
     echo "$(date): Task: convert started"
-    set -x
-    mkdir -p /quip_convert/vsi
-    mkdir -p /quip_convert/tif
-    mv ${vsiInput} /quip_convert/vsi/$(basename ${vsiInput})
-    cd /quip_convert/vsi
-    [[ /quip_convert/vsi/$(basename ${vsiInput}) =~ \.tar\.gz$ ]] && ( echo "input is tar.gz file"; tar xzvf ./*.tar.gz )
-    [[ /quip_convert/vsi/$(basename ${vsiInput}) =~ \.zip$ ]] && ( echo "input is zip file"; unzip ./*.zip )
     cd /root
-    time run_convert_wsi.sh $( ls /quip_convert/vsi/*.vsi ) /quip_convert/tif/big.tif /quip_convert/tif/multi.tif
-    mv /quip_convert/tif/multi.tif /cromwell_root/${tifOutput}
+    chmod a+x ./converter_process.sh
+    time ./converter_process.sh ${vsiInput} ${tifOutput}
     echo "$(date): Task: convert finished"
   }
   output {
