@@ -1,20 +1,14 @@
 [
    {
-      "wf_nuclear_segmentation_quip_cnn.wsi_seg.imageInput": "gs://cloudypipelines-test_cromwell_outputs/nuclear_seg_images/001738-000368_1_04_20181011-multires.tif",
-      "wf_nuclear_segmentation_quip_cnn.wsi_seg.result": "seqmentation_results.tar.gz",
-      "wf_nuclear_segmentation_quip_cnn.wsi_seg.CUDA_VISIBLE_DEVICES": "0",
-      "wf_nuclear_segmentation_quip_cnn.wsi_seg.NPROCS": 12
+      "wf_quip_nuclear_segmentation.imageToBeProcessed": "gs://nuclear_seqmentation_quip_cnn_pipeline/input_images/001738-000368_1_04_20181011-multires.tif",
+      "wf_quip_nuclear_segmentation.wsi_seg.result": "seg_results_from_tif.tar.gz",
+      "wf_quip_nuclear_segmentation.wsi_seg.CUDA_VISIBLE_DEVICES": "0",
+      "wf_quip_nuclear_segmentation.wsi_seg.NPROCS": 12
    },
    {
-      "wf_nuclear_segmentation_quip_cnn.wsi_seg.imageInput": "gs://cloudypipelines-test_cromwell_outputs/nuclear_seg_images/001738-000065_1_02_20180731-multires.tif",
-      "wf_nuclear_segmentation_quip_cnn.wsi_seg.result": "seqmentation_results.tar.gz",
-      "wf_nuclear_segmentation_quip_cnn.wsi_seg.CUDA_VISIBLE_DEVICES": "0",
-      "wf_nuclear_segmentation_quip_cnn.wsi_seg.NPROCS": 12
-   },
-   {
-      "wf_nuclear_segmentation_quip_cnn.wsi_seg.imageInput": "gs://cloudypipelines-test_cromwell_outputs/nuclear_seg_images/001738-000006_01_20180608-multires.tif",
-      "wf_nuclear_segmentation_quip_cnn.wsi_seg.result": "seqmentation_results.tar.gz",
-      "wf_nuclear_segmentation_quip_cnn.wsi_seg.CUDA_VISIBLE_DEVICES": "0",
-      "wf_nuclear_segmentation_quip_cnn.wsi_seg.NPROCS": 12
+      "wf_quip_nuclear_segmentation.imageToBeProcessed": "gs://nuclear_seqmentation_quip_cnn_pipeline/input_images/OS-1.zip",
+      "wf_quip_nuclear_segmentation.wsi_seg.result": "seg_results_from_vsi_zip.tar.gz",
+      "wf_quip_nuclear_segmentation.wsi_seg.CUDA_VISIBLE_DEVICES": "0",
+      "wf_quip_nuclear_segmentation.wsi_seg.NPROCS": 12
    }
 ]
