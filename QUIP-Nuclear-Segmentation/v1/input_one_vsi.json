@@ -1,7 +1,6 @@
 [
     {
        "wf_quip_nuclear_segmentation.imageToBeProcessed": "gs://nuclear_seqmentation_quip_cnn_pipeline/input_images/OS-1.zip",
-       "wf_quip_nuclear_segmentation.wsi_seg.result": "seg_results_from_vsi_zip.tar.gz",
        "wf_quip_nuclear_segmentation.wsi_seg.CUDA_VISIBLE_DEVICES": "0",
        "wf_quip_nuclear_segmentation.wsi_seg.NPROCS": 12
     }

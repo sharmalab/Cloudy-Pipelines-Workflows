@@ -42,7 +42,7 @@ task convert {
 task wsi_seg {
   File? imageInput
   File originalInput
-  String result
+  String result = "segmentation_result.tar.gz"
   String CUDA_VISIBLE_DEVICES
   Int NPROCS
   command {
