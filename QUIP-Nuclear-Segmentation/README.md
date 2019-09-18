@@ -1,6 +1,10 @@
 # Nuclear Segmentation
 Nuclear image synthesis and segmentation
 [GitHub](https://github.com/SBU-BMI/quip_cnn_segmentation)
+
+1. Conditionally call VIPS2TIFF if the input is vsi 
+2. Run Segmentation
+
 * Run single image, see sample input file: ```input_one.json```
 * Run multiple images, see sample input file: ```inputs_list.json```
 
