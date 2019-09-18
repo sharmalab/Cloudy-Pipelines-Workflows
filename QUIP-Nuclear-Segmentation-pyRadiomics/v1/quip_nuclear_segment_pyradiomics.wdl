@@ -69,7 +69,37 @@ task wsi_seg {
   }
 }
 
-workflow wf_quip_nuclear_segmentation {
+task pyradiomics_compute {
+  File? imageInput
+  File originalInput
+  String result = "pyradiomics_compute.tar.gz"
+  Int PATCH_SIZE
+  File segmentResults
+  File? tumorRegionFile
+  command {
+      echo "$(date): Task: pyradiomics started"
+      cd /app
+      chmod a+x pyradiomics_features_process.sh
+
+      time ./pyradiomics_features_process.sh -imageInput=${imageInput} -originalInput=${originalInput} -result=${result} -PATCH_SIZE=${PATCH_SIZE} -segmentResults=${segmentResults} -tumorRegionFile=${tumorRegionFile}
+          
+      echo "$(date): Task: pyradiomics finished"
+  }
+  output {
+      File out="${result}"
+  }
+  runtime {
+      docker: "us.gcr.io/cloudypipelines/pyradiomics_features:1.0"
+      bootDiskSizeGb: 100
+      disks: "local-disk 70 SSD"
+      memory:  "64 GB"
+      cpu: "12"
+      maxRetries: 1
+      zones: "us-east1-b us-east1-c us-east1-d us-central1-a us-central1-b us-central1-c us-central1-f us-east4-a us-east4-b us-east4-c us-west1-a us-west1-b us-west1-c us-west2-a us-west2-b us-west2-c"
+  }
+}
+
+workflow wf_quip_nuclear_segment_pyradiomics {
   File imageToBeProcessed
   call vsi_detector {input: fileInput=imageToBeProcessed}
   Boolean should_call_convert = vsi_detector.out
@@ -79,7 +109,8 @@ workflow wf_quip_nuclear_segmentation {
   }
   File? convert_out_maybe = convert_out
   call wsi_seg {input: imageInput=convert_out_maybe, originalInput=imageToBeProcessed}
+  call pyradiomics_compute {input: imageInput=convert_out_maybe, originalInput=imageToBeProcessed, segmentResults=wsi_seg.out}
   output {
-     wsi_seg.out
+     pyradiomics_compute.out
   }
 }
