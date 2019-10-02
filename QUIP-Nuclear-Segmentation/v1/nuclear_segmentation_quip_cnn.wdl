@@ -47,10 +47,9 @@ task wsi_seg {
   Int NPROCS
   command {
     echo "$(date): Task: wsi_seg started"
-    cd /root/quip_cnn_segmentation/
-    chmod a+x segmentation_process.sh 
-    time ./segmentation_process.sh ${originalInput} ${result} ${CUDA_VISIBLE_DEVICES} ${NPROCS} ${imageInput}
-    echo "$(date): Task: quip_nuclear_segmentation finished"
+    echo "time segmentation_process.sh ${originalInput} ${result} ${CUDA_VISIBLE_DEVICES} ${NPROCS} ${imageInput}"
+    time segmentation_process.sh ${originalInput} ${result} ${CUDA_VISIBLE_DEVICES} ${NPROCS} ${imageInput}
+    echo "$(date): Task: wsi_seg finished"
   }
   output {
     File out="${result}"

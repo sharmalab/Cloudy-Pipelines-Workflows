@@ -1,6 +1,6 @@
 task convert {
   File vsiInput
-  String tifOutput
+  String tifOutput = "multires.tif"
   command {
     echo "$(date): Task: convert started"
     cd /root

@@ -1,6 +1,5 @@
 [
   {
      "wf_quip_converter_vsi_to_tiff.convert.vsiInput": "gs://cloudypipelines-test_cromwell_outputs/input_images/vsi/OS-1.zip",
-     "wf_quip_converter_vsi_to_tiff.convert.tifOutput": "multires.tif"
   }
 ]
