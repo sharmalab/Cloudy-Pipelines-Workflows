@@ -1,5 +1,5 @@
-# Quip Nuclear Segmentation pyRadiomics
-The pipeline consists of following workflows:
+# Quip Nuclear Segmentation pyRadiomics Workflow Pipeline
+The workflow pipeline consists of followings: 
 1. **VIPS2TIFF**: Convert vendor format to tiled, multires tiff format, it is conditionally executed when the input image is vendor format. For details, see [GitHub](https://github.com/SBU-BMI/quip_converter.git)
 2. **Segmentation**: Nuclear image synthesis and segmentation. For details, see [GitHub](https://github.com/SBU-BMI/quip_cnn_segmentation)
 3. **Pyradiomics Features**: Generates patch level pyradiomics feature dataset and image level aggregational result. It also create histogram plot and percentile plot for each pyradiomics feature. For details, see [GitHub](https://github.com/SBU-BMI/pyradiomics_features).
