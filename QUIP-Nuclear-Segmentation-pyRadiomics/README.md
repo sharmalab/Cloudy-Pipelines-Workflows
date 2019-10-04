@@ -1,16 +1,13 @@
 # Nuclear Segmentation
 Nuclear image synthesis and segmentation
 [GitHub](https://github.com/SBU-BMI/quip_cnn_segmentation)
-* Run single image, see sample input file: ```input_one.json```
+* Run single tif image, see sample input file: ```input_one_tif.json```
+* Run single compressed vsi image, see sample input file: ```input_one_vsi.json```
 * Run multiple images, see sample input file: ```inputs_list.json```
 
-Replace the url in field ```wf_nuclear_segmentation_quip_cnn.wsi_seg.imageInput``` with your TIF image url on Google bucket.
+Replace the url in field ```wf_quip_nuclear_segment_pyradiomics.imageToBeProcessed``` with your TIF or VSI image url on Google bucket.
 
 ## v1
-* Support the input tif image located in Google bucket.
+* The input images must be in Google bucket
+* If the image is vsi format, it must be in .vsi or compressed format in .zip or .tar.gz.
 * One ```nvidia-tesla-t4``` GPU is recommended
-
-## v2
-* Support the input tif image located in Google bucket.
-* One ```nvidia-tesla-t4``` GPU is recommended
-* Allow users to specify [Runtime attributes](https://cromwell.readthedocs.io/en/develop/RuntimeAttributes/), such as CPU count, Memory, Disk size,  GPU type, Nvidia driver version, etc. in the inputs.
