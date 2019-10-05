@@ -30,4 +30,5 @@ quip_nuclear_segment_pyradiomics.wdl
   - workflowInputs: choose input json files from your local that contains the images to be processed, see "Sample Input Json File" section to construct your json file.
   - workflowSource: choose WDL file: quip_nuclear_segment_pyradiomics.wdl
 * Click "Execute"
+* An email notification that includes label, requestId and individual jobId will be sent if the submission succeeds.
 
