@@ -4,7 +4,6 @@ task convert {
   command {
     echo "$(date): Task: convert started"
     cd /root
-    chmod a+x ./converter_process.sh
     time ./converter_process.sh ${vsiInput} ${tifOutput}
     echo "$(date): Task: convert finished"
   }
