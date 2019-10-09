@@ -71,7 +71,7 @@ task wsi_seg {
 task pyradiomics_compute {
   File? imageInput
   File originalInput
-  String result = "pyradiomics_compute.tar.gz"
+  String result
   Int PATCH_SIZE
   File segmentResults
   File? tumorRegionFile
@@ -81,7 +81,7 @@ task pyradiomics_compute {
       chmod a+x ./pyradiomics_features_process.sh
 
       time ./pyradiomics_features_process.sh -imageInput=${imageInput} -originalInput=${originalInput} -result=${result} -PATCH_SIZE=${PATCH_SIZE} -segmentResults=${segmentResults} -tumorRegionFile=${tumorRegionFile}
-          
+
       echo "$(date): Task: pyradiomics finished"
   }
   output {

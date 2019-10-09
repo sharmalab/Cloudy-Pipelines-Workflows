@@ -1,10 +1,9 @@
 task convert {
   File vsiInput
-  String tifOutput = "multires.tif"
+  String tifOutput
   command {
     echo "$(date): Task: convert started"
     cd /root
-    chmod a+x ./converter_process.sh
     time ./converter_process.sh ${vsiInput} ${tifOutput}
     echo "$(date): Task: convert finished"
   }
