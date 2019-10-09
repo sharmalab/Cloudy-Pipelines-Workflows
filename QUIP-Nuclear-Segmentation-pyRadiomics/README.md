@@ -14,7 +14,9 @@ The workflow pipeline consists of followings:
 * Run single compressed vsi image, see sample input file: ```input_one_vsi.json```
 * Run multiple images, see sample input file: ```inputs_list.json```
 
-Replace the url in field ```wf_quip_nuclear_segment_pyradiomics.imageToBeProcessed``` with your TIF or VSI image url on Google bucket.
+### Notes
+* Replace the url in field ```wf_quip_nuclear_segment_pyradiomics.imageToBeProcessed``` with your TIF or VSI image url on Google bucket.
+* Replace the output file name in ```wf_quip_nuclear_segment_pyradiomics.pyradiomics_compute.result``` with meaningful  file name ending with ```.tar.gz```
 
 ## WDL File 
 quip_nuclear_segment_pyradiomics.wdl
