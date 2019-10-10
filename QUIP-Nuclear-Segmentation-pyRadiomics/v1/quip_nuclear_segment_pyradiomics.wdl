@@ -21,7 +21,6 @@ task convert {
   command {
     echo "$(date): Task: convert started"
     cd /root
-    chmod a+x ./converter_process.sh
     time ./converter_process.sh ${vsiInput} ${tifOutput}
     echo "$(date): Task: convert finished"
   }
@@ -78,10 +77,7 @@ task pyradiomics_compute {
   command {
       echo "$(date): Task: pyradiomics started"
       cd /app
-      chmod a+x ./pyradiomics_features_process.sh
-
       time ./pyradiomics_features_process.sh -imageInput=${imageInput} -originalInput=${originalInput} -result=${result} -PATCH_SIZE=${PATCH_SIZE} -segmentResults=${segmentResults} -tumorRegionFile=${tumorRegionFile}
-
       echo "$(date): Task: pyradiomics finished"
   }
   output {
