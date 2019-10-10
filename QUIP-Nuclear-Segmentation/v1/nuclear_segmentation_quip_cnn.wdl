@@ -21,7 +21,6 @@ task convert {
   command {
     echo "$(date): Task: convert started"
     cd /root
-    chmod a+x ./converter_process.sh
     time ./converter_process.sh ${vsiInput} ${tifOutput}
     echo "$(date): Task: convert finished"
   }
@@ -42,7 +41,7 @@ task convert {
 task wsi_seg {
   File? imageInput
   File originalInput
-  String result = "segmentation_result.tar.gz"
+  String result
   String CUDA_VISIBLE_DEVICES
   Int NPROCS
   command {
