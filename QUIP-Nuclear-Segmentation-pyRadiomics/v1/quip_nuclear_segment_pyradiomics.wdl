@@ -84,7 +84,7 @@ task pyradiomics_compute {
       File out="${result}"
   }
   runtime {
-      docker: "us.gcr.io/cloudypipelines/pyradiomics_features:1.0"
+      docker: "us.gcr.io/cloudypipelines/pyradiomics_features:1.1"
       bootDiskSizeGb: 100
       disks: "local-disk 70 SSD"
       memory:  "64 GB"
