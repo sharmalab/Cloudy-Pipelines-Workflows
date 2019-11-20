@@ -22,8 +22,8 @@ The workflow pipeline consists of followings:
 quip_nuclear_segment_pyradiomics.wdl
 
 ## Run the Pipeline
-* Logon: https://pipelines.virtualpacs.org:9000/
-* Select "Workflow"
+* Logon: https://cloudypipeline:9000/
+* Select "Workflow Pipeline"
 * Select "POST /ui/workflows/vi", then click "Try it out"
 * Input the following fields:
   - email: your registered google email on CloudyPipelines
