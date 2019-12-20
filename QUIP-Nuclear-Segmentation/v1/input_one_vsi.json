@@ -1,7 +1,7 @@
 [
     {
-       "wf_quip_nuclear_segmentation.imageToBeProcessed": "gs://nuclear_seqmentation_quip_cnn_pipeline/input_images/OS-1.zip",
-       "wf_quip_nuclear_segmentation.wsi_seg.result": "OS-1.zip_segmentation_result.tar.gz",
+       "wf_quip_nuclear_segmentation.imageToBeProcessed": "gs://vtr-project-2019/testing_images/OS-1.zip",
+       "wf_quip_nuclear_segmentation.resultName": "name_conv_test",
        "wf_quip_nuclear_segmentation.wsi_seg.CUDA_VISIBLE_DEVICES": "0",
        "wf_quip_nuclear_segmentation.wsi_seg.NPROCS": 12
     }
