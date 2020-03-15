@@ -1,0 +1,10 @@
+[
+   {
+      "wf_quip_converter_vsi_to_tiff.convert.vsiInput": "gs://nuclear_seqmentation_quip_cnn_pipeline/input_images/OS-1.zip",
+      "wf_quip_converter_vsi_to_tiff.convert.tifOutput": "OS-1.zip_convert_result.tif"
+   },
+   {
+       "wf_quip_converter_vsi_to_tiff.convert.vsiInput": "gs://nuclear_seqmentation_quip_cnn_pipeline/input_images/001738-000368_1_04_20181011-multires.tif",
+       "wf_quip_converter_vsi_to_tiff.convert.tifOutput": "001738-000368_1_04_20181011-multires.tif_convert_result.tif"
+   }
+]
