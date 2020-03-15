@@ -17,15 +17,17 @@ task vsi_detector {
 
 task convert {
   File vsiInput
-  String tifOutput = "multires.tif"
+  String pattern = "\\.+\\w+"
+  String replacement = ".tif"
+  String tifname = sub(basename(vsiInput),pattern,replacement)
   command {
     echo "$(date): Task: convert started"
     cd /root
-    time ./converter_process.sh ${vsiInput} ${tifOutput}
+    time ./converter_process.sh ${vsiInput} ${tifname}
     echo "$(date): Task: convert finished"
   }
   output {
-    File out="${tifOutput}"
+    File out=tifname
   }
   runtime {
     docker: "us.gcr.io/cloudypipelines/quip_converter_to_tiff:1.1"
@@ -41,7 +43,9 @@ task convert {
 task wsi_seg {
   File? imageInput
   File originalInput
-  String result = "segmentation_result.tar.gz"
+  String pattern = "\\.+\\w+"
+  String replacement = "_nuclear_segmentation.tar.gz"
+  String result = sub(basename(originalInput),pattern,replacement)
   String CUDA_VISIBLE_DEVICES
   Int NPROCS
   command {
@@ -51,7 +55,7 @@ task wsi_seg {
     echo "$(date): Task: wsi_seg finished"
   }
   output {
-    File out="${result}"
+    File out=result
   }
   runtime {
     docker: "us.gcr.io/cloudypipelines/nuclear_seqmentation_quip_cnn_tensorflow-latest-gpu:1.0"
@@ -70,7 +74,9 @@ task wsi_seg {
 task pyradiomics_compute {
   File? imageInput
   File originalInput
-  String result
+  String pattern = "\\.+\\w+"
+  String replacement = "_pyradiomics_out.tar.gz"
+  String result = sub(basename(originalInput),pattern,replacement)
   Int PATCH_SIZE
   File segmentResults
   File? tumorRegionFile
@@ -81,7 +87,7 @@ task pyradiomics_compute {
       echo "$(date): Task: pyradiomics finished"
   }
   output {
-      File out="${result}"
+      File out=result
   }
   runtime {
       docker: "us.gcr.io/cloudypipelines/pyradiomics_features:1.1"
@@ -94,7 +100,7 @@ task pyradiomics_compute {
   }
 }
 
-workflow wf_quip_nuclear_segment_pyradiomics {
+workflow wf_quip_nuclear_segment_pyradiomics_v1 {
   File imageToBeProcessed
   call vsi_detector {input: fileInput=imageToBeProcessed}
   Boolean should_call_convert = vsi_detector.out

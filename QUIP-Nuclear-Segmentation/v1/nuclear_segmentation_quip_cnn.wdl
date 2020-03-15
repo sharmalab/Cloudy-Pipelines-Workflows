@@ -13,19 +13,22 @@ task vsi_detector {
     maxRetries: 1
     zones: "us-east1-b us-east1-c us-east1-d us-central1-a us-central1-b us-central1-c us-central1-f us-east4-a us-east4-b us-east4-c us-west1-a us-west1-b us-west1-c us-west2-a us-west2-b us-west2-c"
   }
-}
+} 
 
 task convert {
   File vsiInput
-  String tifOutput
+  String pattern = "\\.+\\w+"
+  String replacement = ".tiff"
+  String tifname = sub(basename(vsiInput),pattern,replacement)
   command {
-    echo "$(date): Task: convert started"
+    echo "$(date): Task: convert started" 
+    echo "File name to be used ${tifname}"
     cd /root
-    time ./converter_process.sh ${vsiInput} "${tifOutput}.tif"
+    time ./converter_process.sh ${vsiInput} ${tifname}
     echo "$(date): Task: convert finished"
-  }
+  } 
   output {
-    File out="${tifOutput}.tif"
+    File out=tifname
   }
   runtime {
     docker: "us.gcr.io/cloudypipelines/quip_converter_to_tiff:1.1"
@@ -41,7 +44,9 @@ task convert {
 task wsi_seg {
   File? imageInput
   File originalInput
-  String result
+  String pattern = "\\.+\\w+"
+  String replacement = "_nuclear_segmentation"
+  String result = sub(basename(originalInput),pattern,replacement)
   String CUDA_VISIBLE_DEVICES
   Int NPROCS
   command {
@@ -69,15 +74,14 @@ task wsi_seg {
 
 workflow wf_quip_nuclear_segmentation {
   File imageToBeProcessed
-  String resultName
   call vsi_detector {input: fileInput=imageToBeProcessed}
   Boolean should_call_convert = vsi_detector.out
   if (should_call_convert) {
-    call convert {input: vsiInput=imageToBeProcessed,tifOutput=resultName}
+    call convert {input: vsiInput=imageToBeProcessed}
     File convert_out = convert.out
   }
   File? convert_out_maybe = convert_out
-  call wsi_seg {input: imageInput=convert_out_maybe, originalInput=imageToBeProcessed,result=resultName}
+  call wsi_seg {input: imageInput=convert_out_maybe, originalInput=imageToBeProcessed}
   output {
      wsi_seg.out
   }

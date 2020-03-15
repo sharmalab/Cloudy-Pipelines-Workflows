@@ -1,7 +1,0 @@
-[
-    {
-       "wf_quip_lymphocyte_segmentation.imageToBeProcessed": "gs://cloudy-pipelines-test/TCGA-AO-A12E-01A-01-BSA.9b55ad59-32de-4238-9958-b54e3a43eb2e.svs",
-       "wf_quip_lymphocyte_segmentation.resultName":"TCGA-AO-A12E-01A-01-BSA.9b55ad59-32de-4238-9958-b54e3a43eb2e",
-       "wf_quip_lymphocyte_segmentation.BORBcompatible":"true"
-    }
-]

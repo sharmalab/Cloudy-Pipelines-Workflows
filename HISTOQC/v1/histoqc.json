@@ -1,0 +1,10 @@
+[
+  {
+    "wf_histoqc.histoqc.imageListFile": "gs://cloudypipelines-com-histoqc/input/batch100_2019-12-23/images_to_be_processed_100.txt",
+    "wf_histoqc.histoqc.outputFolder": "gs://cloudypipelines-com-histoqc/output"
+  },
+  {
+    "wf_histoqc.histoqc.imageListFile": "gs://cloudypipelines-com-histoqc/input/batch100_2019-12-23/images_to_be_processed_200.txt",
+    "wf_histoqc.histoqc.outputFolder": "gs://cloudypipelines-com-histoqc/output"
+  }
+]

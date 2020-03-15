@@ -1,9 +1,8 @@
 [
     {
-        "wf_quip_nuclear_segment_pyradiomics.imageToBeProcessed": "gs://nuclear_seqmentation_quip_cnn_pipeline/input_images/001738-000368_1_04_20181011-multires.tif",
-        "wf_quip_nuclear_segment_pyradiomics.pyradiomics_compute.result": "001738-000368_1_04_20181011-multires.tif_pyradiomics_result.tar.gz",
-        "wf_quip_nuclear_segment_pyradiomics.wsi_seg.NPROCS": 12,
-        "wf_quip_nuclear_segment_pyradiomics.wsi_seg.CUDA_VISIBLE_DEVICES": "0",
-        "wf_quip_nuclear_segment_pyradiomics.pyradiomics_compute.PATCH_SIZE": 500
+        "wf_quip_nuclear_segment_pyradiomics_v1.imageToBeProcessed": "gs://nuclear_seqmentation_quip_cnn_pipeline/input_images/001738-000368_1_04_20181011-multires.tif",
+        "wf_quip_nuclear_segment_pyradiomics_v1.wsi_seg.NPROCS": 12,
+        "wf_quip_nuclear_segment_pyradiomics_v1.wsi_seg.CUDA_VISIBLE_DEVICES": "0",
+        "wf_quip_nuclear_segment_pyradiomics_v1.pyradiomics_compute.PATCH_SIZE": 500
     }
 ]
