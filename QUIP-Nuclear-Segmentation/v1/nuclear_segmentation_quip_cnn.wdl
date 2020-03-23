@@ -7,31 +7,31 @@ task vsi_detector {
     Boolean out=read_boolean(stdout())
   }
   runtime {
-    docker: "us.gcr.io/cloudypipelines/quip_vsi_detector:1.0"
-    memory:  "2.75 GB"
+    docker: "us.gcr.io/cloudypipelines-com/quip_vsi_detector:1.0"
+    memory:  "3.75 GB"
     cpu: "1"
     maxRetries: 1
     zones: "us-east1-b us-east1-c us-east1-d us-central1-a us-central1-b us-central1-c us-central1-f us-east4-a us-east4-b us-east4-c us-west1-a us-west1-b us-west1-c us-west2-a us-west2-b us-west2-c"
   }
-} 
+}
 
 task convert {
   File vsiInput
   String pattern = "\\.+\\w+"
-  String replacement = ".tiff"
-  String tifname = sub(basename(vsiInput),pattern,replacement)
+  String replacement = ".tif"
+  String tiffName = sub(basename(vsiInput),pattern,replacement)
   command {
-    echo "$(date): Task: convert started" 
-    echo "File name to be used ${tifname}"
+    echo "$(date): Task: convert started"
+    echo "File name to be used ${tiffName}" 
     cd /root
-    time ./converter_process.sh ${vsiInput} ${tifname}
+    time ./converter_process.sh ${vsiInput} ${tiffName}
     echo "$(date): Task: convert finished"
-  } 
+  }
   output {
-    File out=tifname
+    File out=tiffName
   }
   runtime {
-    docker: "us.gcr.io/cloudypipelines/quip_converter_to_tiff:1.1"
+    docker: "us.gcr.io/cloudypipelines-com/quip_converter_to_tiff:1.1"
     bootDiskSizeGb: 50
     disks: "local-disk 50 SSD"
     memory:  "12 GB"
@@ -41,48 +41,53 @@ task convert {
   }
 }
 
-task wsi_seg {
-  File? imageInput
+task quip_lymphocyte_segmentation {
+  File? imageInput  
   File originalInput
+  String? BORBcompatible
+  String network
   String pattern = "\\.+\\w+"
-  String replacement = "_nuclear_segmentation"
+  String replacement = "_segmentation"
   String result = sub(basename(originalInput),pattern,replacement)
-  String CUDA_VISIBLE_DEVICES
-  Int NPROCS
   command {
-    echo "$(date): Task: wsi_seg started"
-    echo "time segmentation_process.sh ${originalInput} ${result}.tar.gz ${CUDA_VISIBLE_DEVICES} ${NPROCS} ${imageInput}"
-    time segmentation_process.sh ${originalInput} "${result}.tar.gz" ${CUDA_VISIBLE_DEVICES} ${NPROCS} ${imageInput}
-    echo "$(date): Task: wsi_seg finished"
-  }
-  output {
-    File out="${result}.tar.gz"
-  }
-  runtime {
-    docker: "us.gcr.io/cloudypipelines/nuclear_seqmentation_quip_cnn_tensorflow-latest-gpu:1.0"
-    bootDiskSizeGb: 70
-    disks: "local-disk 70 SSD"
-    memory:  "64 GB"
-    cpu: "12"
-    preemptible: 3
-    gpuCount: 1
-    zones: "us-central1-a us-central1-b us-east1-d us-east1-c us-west1-a us-west1-b southamerica-east1-c europe-west4-b europe-west4-c"
-    gpuType: "nvidia-tesla-t4"
-    nvidiaDriverVersion: "418.40.04"
-  }
-}
+      echo "$(date): Till Segment has begun "
+      cd /root/quip_classification 
+      chmod a+x ./til_segment_process.sh 
+      time ./til_segment_process.sh -originalInput=${originalInput} -imageInput=${imageInput} -result="${result}".tar.gz -BORBcompatible=${BORBcompatible} -network=${network}
+      echo "$(date): Task: Til segment has finished"
+    }
+    output {
+      File out="${result}.tar.gz"
+    }
+    runtime {
+      docker: "us.gcr.io/cloudypipelines-com/til_segmentation:1.5"
+      bootDiskSizeGb: 70
+      disks: "local-disk 70 SSD"
+      memory:  "52 GB"
+      cpu: "8"
+      maxRetries: 1
+      gpuCount: 1
+      zones: "us-east1-d us-east1-c us-central1-a us-central1-c us-west1-a us-west1-b"
+      gpuType: "nvidia-tesla-t4"
+      nvidiaDriverVersion: "418.40.04"
+    }
+ }
 
-workflow wf_quip_nuclear_segmentation {
+
+workflow wf_quip_lymphocyte_segmentation_v03232020{ 
   File imageToBeProcessed
-  call vsi_detector {input: fileInput=imageToBeProcessed}
-  Boolean should_call_convert = vsi_detector.out
-  if (should_call_convert) {
-    call convert {input: vsiInput=imageToBeProcessed}
+  String? BORBcompatible
+  String network 
+  #Detect if input image is vsi or not 
+  call vsi_detector {input: fileInput=imageToBeProcessed} 
+  Boolean should_call_convert = vsi_detector.out 
+  if(should_call_convert){
+    call convert {input: vsiInput=imageToBeProcessed} 
     File convert_out = convert.out
-  }
+  }#do standard process  
   File? convert_out_maybe = convert_out
-  call wsi_seg {input: imageInput=convert_out_maybe, originalInput=imageToBeProcessed}
+  call quip_lymphocyte_segmentation {input: imageInput=convert_out_maybe,originalInput=imageToBeProcessed,BORBcompatible=BORBcompatible,network=network}
   output {
-     wsi_seg.out
+     quip_lymphocyte_segmentation.out
   }
-}
+} 
