@@ -1,7 +1,7 @@
 [
     {
-       "wf_quip_lymphocyte_segmentation.imageToBeProcessed": "gs://vtr-project-2019/testing_images/OS-1.zip",
-       "wf_quip_lymphocyte_segmentation.BORBcompatible":"true",
-       "wf_quip_lymphocyte_segmentation.network":"vgg"
+       "wf_quip_lymphocyte_segmentation_vgg_v03232020.imageToBeProcessed": "gs://vtr-project-2019/testing_images/OS-1.zip",
+       "wf_quip_lymphocyte_segmentation_vgg_v03232020.BORBcompatible":"true",
+       "wf_quip_lymphocyte_segmentation_vgg_v03232020.network":"vgg"
     }
 ]
