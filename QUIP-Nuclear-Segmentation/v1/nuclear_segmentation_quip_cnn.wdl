@@ -74,7 +74,7 @@ task quip_lymphocyte_segmentation {
  }
 
 
-workflow wf_quip_lymphocyte_segmentation_v03232020{ 
+workflow wf_quip_lymphocyte_segmentation_v03232020 { 
   File imageToBeProcessed
   String? BORBcompatible
   String network 

@@ -1,7 +1,7 @@
 [
     {
-       "wf_quip_lymphocyte_segmentation.imageToBeProcessed": "gs://vtr-project-2019/VTR_Pending/Iowa/17038546.svs",
-       "wf_quip_lymphocyte_segmentation.BORBcompatible":"true",
-       "wf_quip_lymphocyte_segmentation.network":"incep"
+       "wf_quip_lymphocyte_segmentation_v03232020.imageToBeProcessed": "gs://vtr-project-2019/VTR_Pending/Iowa/17038546.svs",
+       "wf_quip_lymphocyte_segmentation_v03232020.BORBcompatible":"true",
+       "wf_quip_lymphocyte_segmentation_v03232020.network":"incep"
     }
 ]
